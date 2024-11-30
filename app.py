@@ -141,7 +141,7 @@ if seccion == "Explicación y guía":
     # Sergio Fernando Gutiérrez Gutiérrez
     with col3:
         st.image("Sergio_Fernando_Gutierrez.jpeg", caption="Sergio Fernando Gutiérrez Gutiérrez", width=200)
-        st.markdown("Estudiante de Economía, séptimo semestre, pasante en Consejo Nuevo León de febrero del 2024 a junio del 2024 y concentración en Economía Aplicadad y Ciencia de Datos.")
+        st.markdown("Estudiante de Economía, séptimo semestre, pasante en Consejo Nuevo León de febrero d a junio del 2024 y concentración en Economía Aplicadad y Ciencia de Datos.")
         st.markdown("[LinkedIn](www.linkedin.com/in/sergio-fernando-gutiérrez-gutiérrez-b47a00329)")
    # Soporte
     st.markdown(
