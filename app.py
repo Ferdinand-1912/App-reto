@@ -155,7 +155,7 @@ if seccion == "Explicación y guía":
     )
 
     # Ruta al archivo PDF
-    pdf_path = "/Users/sergiofernandogutierrezgutierrez/Downloads/Soporte de la App dinámica.pdf"
+    pdf_path = "Soporte de la App dinámica.pdf"
 
 # Botón para descargar el PDF
     try:
