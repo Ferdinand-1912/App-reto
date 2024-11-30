@@ -129,18 +129,18 @@ if seccion == "Explicación y guía":
     
     # Andrés Salas Garza
     with col1:
-        st.image("/Users/sergiofernandogutierrezgutierrez/Downloads/Andrés_Salas.jpeg", caption="Andrés Salas Garza", width=200)
+        st.image("Andrés_Salas.jpeg", caption="Andrés Salas Garza", width=200)
         st.markdown("Estudiante de Economía, séptimo semestre.")
         st.markdown("[LinkedIn](#)")
     
     # Emiliano Tress Ramírez
     with col2:
-        st.image("/Users/sergiofernandogutierrezgutierrez/Downloads/Emiliano_Tress.jpeg", caption="Emiliano Tress Ramírez", width=200)
+        st.image("Emiliano_Tress.jpeg", caption="Emiliano Tress Ramírez", width=200)
         st.markdown("Estudiante de Economía, séptimo semestre.")
         st.markdown("[LinkedIn](#)")
     # Sergio Fernando Gutiérrez Gutiérrez
     with col3:
-        st.image("/Users/sergiofernandogutierrezgutierrez/Downloads/Sergio_Fernando_Gutierrez.jpeg", caption="Sergio Fernando Gutiérrez Gutiérrez", width=200)
+        st.image("Sergio_Fernando_Gutierrez.jpeg", caption="Sergio Fernando Gutiérrez Gutiérrez", width=200)
         st.markdown("Estudiante de Economía, séptimo semestre, pasante en Consejo Nuevo León de febrero del 2024 a junio del 2024.")
         st.markdown("[LinkedIn](www.linkedin.com/in/sergio-fernando-gutiérrez-gutiérrez-b47a00329)")
    # Soporte
