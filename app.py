@@ -156,7 +156,7 @@ if seccion == "Explicación y guía":
     )
 
     # Ruta al archivo PDF
-    pdf_path = "soporte_de_la_app.pdf"
+    pdf_path = "App-reto/soporte_de_la_app.pdf"
 
 # Botón para descargar el PDF
     try:
