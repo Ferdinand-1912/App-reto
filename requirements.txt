@@ -5,4 +5,5 @@ joblib
 scikit-learn
 xgboost
 matplotlib
+shap
 
