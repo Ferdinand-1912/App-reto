@@ -166,7 +166,7 @@ if seccion == "Explicación y guía":
         st.download_button(
             label="Descargar PDF",
             data=pdf_data,
-            file_name="Soporte de la App dinámica.pdf",
+            file_name="soporte_de_la_app.pdf",
             mime="application/pdf",
     )
     except FileNotFoundError:
