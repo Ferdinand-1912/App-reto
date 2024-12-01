@@ -115,6 +115,7 @@ if seccion == "Explicación y guía":
           Los resultados muestran el salario estimado por hora para ambos grupos (con y sin discapacidad). Por ejemplo:
             - Salario con discapacidad: $25.77 por hora.
             - Salario sin discapacidad: $28.75 por hora.
+            
           Esto implica una diferencia salarial de $3.02 por hora en promedio entre los dos grupos.
 
         ### Consideraciones
