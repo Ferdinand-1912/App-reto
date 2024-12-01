@@ -18,7 +18,7 @@ modelos_prestaciones = {
     "Crédito para vivienda": "modelo_credito_vivienda.pkl",
 }
 
-nombre_interno_map = {
+modelos_salario = {
     "cualquier_discapacidad": "modelo_salario_cualquier_discapacidad.pkl",
     "discapacidad_ver": "modelo_salario_discapacidad_ver.pkl",
     "discapacidad_oir": "modelo_salario_discapacidad_oir.pkl",
@@ -248,38 +248,15 @@ elif seccion == "Modelos Clasificadores de Prestaciones":
         st.write(f"Probabilidad: {probabilidad:.2f}")
         
 
-    # Mapeo de nombres formales
-    nombre_formal_map = {
-        "cualquier_discapacidad": "Cualquier Discapacidad",
-        "discapacidad_ver": "Discapacidad Visual",
-        "discapacidad_oir": "Discapacidad Auditiva",
-        "discapacidad_caminar": "Discapacidad Motriz",
-        "discapacidad_banarse": "Discapacidad para Bañarse",
-        "discapacidad_hablar": "Discapacidad del Habla",
-        "discapacidad_recordar": "Discapacidad Cognitiva"
-    }
-
-    # Invertir el mapeo para obtener el nombre interno desde el formal
-    nombre_interno_map = {v: k for k, v in nombre_formal_map.items()}
-
-    # Sección: Predicción de Salarios por Discapacidad
+# Sección: Predicción de Salarios por Discapacidad
 elif seccion == "Predicción de Salarios por Discapacidad":
     st.title("Predicción de Salarios por Discapacidad")
-    
-     # Usar los nombres formales en el menú desplegable
-    discapacidad_formal_seleccionada = st.sidebar.selectbox(
-        "Tipo de Discapacidad",
-        list(nombre_formal_map.values())
-    )
-    
-    # Obtener el nombre interno correspondiente
-    discapacidad_seleccionada = nombre_interno_map[discapacidad_formal_seleccionada]
-    
+    discapacidad_seleccionada = st.sidebar.selectbox("Tipo de Discapacidad", list(modelos_salario.keys()))
     modelo_path = modelos_salario[discapacidad_seleccionada]
     modelo = cargar_modelo(modelo_path)
 
     # Entrada de datos
-    st.header(f"Predicción del Salario por Hora para {discapacidad_formal_seleccionada}")
+    st.header(f"Predicción del Salario por Hora para {discapacidad_seleccionada}")
     edad = st.number_input("Edad", min_value=18, max_value=99, value=30)
     mujer = st.selectbox("Género", options=["Hombre", "Mujer"])
     escoacum = st.number_input("Escolaridad Acumulada (en años)", min_value=0, max_value=30, value=12)
