@@ -263,123 +263,123 @@ elif seccion == "Modelos Clasificadores de Prestaciones":
     nombre_interno_map = {v: k for k, v in nombre_formal_map.items()}
 
     # Sección: Predicción de Salarios por Discapacidad
-    elif seccion == "Predicción de Salarios por Discapacidad":
-        st.title("Predicción de Salarios por Discapacidad")
+elif seccion == "Predicción de Salarios por Discapacidad":
+    st.title("Predicción de Salarios por Discapacidad")
     
-        # Usar los nombres formales en el menú desplegable
-        discapacidad_formal_seleccionada = st.sidebar.selectbox(
-            "Tipo de Discapacidad",
-            list(nombre_formal_map.values())
-        )
+     # Usar los nombres formales en el menú desplegable
+    discapacidad_formal_seleccionada = st.sidebar.selectbox(
+        "Tipo de Discapacidad",
+        list(nombre_formal_map.values())
+    )
     
-        # Obtener el nombre interno correspondiente
-        discapacidad_seleccionada = nombre_interno_map[discapacidad_formal_seleccionada]
+    # Obtener el nombre interno correspondiente
+    discapacidad_seleccionada = nombre_interno_map[discapacidad_formal_seleccionada]
     
-        modelo_path = modelos_salario[discapacidad_seleccionada]
-        modelo = cargar_modelo(modelo_path)
+    modelo_path = modelos_salario[discapacidad_seleccionada]
+    modelo = cargar_modelo(modelo_path)
 
-        # Entrada de datos
-        st.header(f"Predicción del Salario por Hora para {discapacidad_formal_seleccionada}")
-        edad = st.number_input("Edad", min_value=18, max_value=99, value=30)
-        mujer = st.selectbox("Género", options=["Hombre", "Mujer"])
-        escoacum = st.number_input("Escolaridad Acumulada (en años)", min_value=0, max_value=30, value=12)
-        afrodes_new = st.selectbox("¿Es afrodescendiente?", options=["No", "Sí"])
-        hlengua_new = st.selectbox("¿Habla una lengua indígena?", options=["No", "Sí"])
-        region = st.selectbox(
-            "Región de Residencia",
-            options=["Centro", "Noroeste", "Noreste", "Occidente/Bajío", "Sur"]
-        )
-        sector = st.selectbox("Sector del Trabajo", options=["Terciario", "Primario", "Secundario"])
-        localidad = st.selectbox(
-            "Tamaño de Localidad (Población)",
-            options=[
-                "Menor de 2,500 habitantes", "2,500 a 14,999 habitantes", 
-                "15,000 a 49,999 habitantes", "50,000 a 99,999 habitantes", 
-                "100,000 o más habitantes"
-            ]
-        )
+    # Entrada de datos
+    st.header(f"Predicción del Salario por Hora para {discapacidad_formal_seleccionada}")
+    edad = st.number_input("Edad", min_value=18, max_value=99, value=30)
+    mujer = st.selectbox("Género", options=["Hombre", "Mujer"])
+    escoacum = st.number_input("Escolaridad Acumulada (en años)", min_value=0, max_value=30, value=12)
+    afrodes_new = st.selectbox("¿Es afrodescendiente?", options=["No", "Sí"])
+    hlengua_new = st.selectbox("¿Habla una lengua indígena?", options=["No", "Sí"])
+    region = st.selectbox(
+        "Región de Residencia",
+        options=["Centro", "Noroeste", "Noreste", "Occidente/Bajío", "Sur"]
+    )
+    sector = st.selectbox("Sector del Trabajo", options=["Terciario", "Primario", "Secundario"])
+    localidad = st.selectbox(
+        "Tamaño de Localidad (Población)",
+        options=[
+            "Menor de 2,500 habitantes", "2,500 a 14,999 habitantes", 
+            "15,000 a 49,999 habitantes", "50,000 a 99,999 habitantes", 
+            "100,000 o más habitantes"
+        ]
+    )
 
-        discapacidades = {
-            "cualquier_discapacidad": 0,
-            "discapacidad_ver": 0,
-            "discapacidad_oir": 0,
-            "discapacidad_caminar": 0,
-            "discapacidad_banarse": 0,
-            "discapacidad_hablar": 0,
-            "discapacidad_recordar": 0
-        }
-        discapacidades_con = discapacidades.copy()
-        discapacidades_con[discapacidad_seleccionada] = 1
+    discapacidades = {
+        "cualquier_discapacidad": 0,
+        "discapacidad_ver": 0,
+        "discapacidad_oir": 0,
+        "discapacidad_caminar": 0,
+        "discapacidad_banarse": 0,
+        "discapacidad_hablar": 0,
+        "discapacidad_recordar": 0
+    }
+    discapacidades_con = discapacidades.copy()
+    discapacidades_con[discapacidad_seleccionada] = 1
 
-        entradas_con = pd.DataFrame([{
-            "edad": edad,
-            "mujer": 1 if mujer == "Mujer" else 0,
-            "escoacum": escoacum,
-            "afrodes_new": 1 if afrodes_new == "Sí" else 0,
-            "hlengua_new": 1 if hlengua_new == "Sí" else 0,
-            "noroeste": 1 if region == "Noroeste" else 0,
-            "noreste": 1 if region == "Noreste" else 0,
-            "occidente_bajio": 1 if region == "Occidente/Bajío" else 0,
-            "sur": 1 if region == "Sur" else 0,
-            "act_prim": 1 if sector == "Primario" else 0,
-            "act_sec": 1 if sector == "Secundario" else 0,
-            "loc_rural": 1 if localidad == "Menor de 2,500 habitantes" else 0,
-            "loc_semirural": 1 if localidad == "2,500 a 14,999 habitantes" else 0,
-            "loc_semiurbano": 1 if localidad == "15,000 a 49,999 habitantes" else 0,
-            "loc_urbano": 1 if localidad == "50,000 a 99,999 habitantes" else 0,
-            **discapacidades_con,
-        }])
+    entradas_con = pd.DataFrame([{
+        "edad": edad,
+        "mujer": 1 if mujer == "Mujer" else 0,
+        "escoacum": escoacum,
+        "afrodes_new": 1 if afrodes_new == "Sí" else 0,
+        "hlengua_new": 1 if hlengua_new == "Sí" else 0,
+        "noroeste": 1 if region == "Noroeste" else 0,
+        "noreste": 1 if region == "Noreste" else 0,
+        "occidente_bajio": 1 if region == "Occidente/Bajío" else 0,
+        "sur": 1 if region == "Sur" else 0,
+        "act_prim": 1 if sector == "Primario" else 0,
+        "act_sec": 1 if sector == "Secundario" else 0,
+        "loc_rural": 1 if localidad == "Menor de 2,500 habitantes" else 0,
+        "loc_semirural": 1 if localidad == "2,500 a 14,999 habitantes" else 0,
+        "loc_semiurbano": 1 if localidad == "15,000 a 49,999 habitantes" else 0,
+        "loc_urbano": 1 if localidad == "50,000 a 99,999 habitantes" else 0,
+        **discapacidades_con,
+    }])
 
-        entradas_sin = pd.DataFrame([{
-            "edad": edad,
-            "mujer": 1 if mujer == "Mujer" else 0,
-            "escoacum": escoacum,
-            "afrodes_new": 1 if afrodes_new == "Sí" else 0,
-            "hlengua_new": 1 if hlengua_new == "Sí" else 0,
-            "noroeste": 1 if region == "Noroeste" else 0,
-            "noreste": 1 if region == "Noreste" else 0,
-            "occidente_bajio": 1 if region == "Occidente/Bajío" else 0,
-            "sur": 1 if region == "Sur" else 0,
-            "act_prim": 1 if sector == "Primario" else 0,
-            "act_sec": 1 if sector == "Secundario" else 0,
-            "loc_rural": 1 if localidad == "Menor de 2,500 habitantes" else 0,
-            "loc_semirural": 1 if localidad == "2,500 a 14,999 habitantes" else 0,
-            "loc_semiurbano": 1 if localidad == "15,000 a 49,999 habitantes" else 0,
-            "loc_urbano": 1 if localidad == "50,000 a 99,999 habitantes" else 0,
-            **discapacidades,
-        }])
+    entradas_sin = pd.DataFrame([{
+        "edad": edad,
+        "mujer": 1 if mujer == "Mujer" else 0,
+        "escoacum": escoacum,
+        "afrodes_new": 1 if afrodes_new == "Sí" else 0,
+        "hlengua_new": 1 if hlengua_new == "Sí" else 0,
+        "noroeste": 1 if region == "Noroeste" else 0,
+        "noreste": 1 if region == "Noreste" else 0,
+        "occidente_bajio": 1 if region == "Occidente/Bajío" else 0,
+        "sur": 1 if region == "Sur" else 0,
+        "act_prim": 1 if sector == "Primario" else 0,
+        "act_sec": 1 if sector == "Secundario" else 0,
+        "loc_rural": 1 if localidad == "Menor de 2,500 habitantes" else 0,
+        "loc_semirural": 1 if localidad == "2,500 a 14,999 habitantes" else 0,
+        "loc_semiurbano": 1 if localidad == "15,000 a 49,999 habitantes" else 0,
+        "loc_urbano": 1 if localidad == "50,000 a 99,999 habitantes" else 0,
+        **discapacidades,
+    }])
 
-        if st.button("Predecir Salarios"):
-            prediccion_con = modelo.predict(entradas_con)[0]
-            salario_con = np.exp(prediccion_con)
+    if st.button("Predecir Salarios"):
+        prediccion_con = modelo.predict(entradas_con)[0]
+        salario_con = np.exp(prediccion_con)
 
-            prediccion_sin = modelo.predict(entradas_sin)[0]
-            salario_sin = np.exp(prediccion_sin)
+        prediccion_sin = modelo.predict(entradas_sin)[0]
+        salario_sin = np.exp(prediccion_sin)
 
-            col1, col2 = st.columns(2)
-            with col1:
-                st.metric("Salario con discapacidad", f"${salario_con:.2f} por hora")
-            with col2:
-                st.metric("Salario sin discapacidad", f"${salario_sin:.2f} por hora")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.metric("Salario con discapacidad", f"${salario_con:.2f} por hora")
+        with col2:
+            st.metric("Salario sin discapacidad", f"${salario_sin:.2f} por hora")
 
-            # Crear una gráfica de barras
-            st.subheader("Comparación de Salarios")
-            import matplotlib.pyplot as plt
+        # Crear una gráfica de barras
+        st.subheader("Comparación de Salarios")
+        import matplotlib.pyplot as plt
 
-            # Datos para la gráfica
-            categorias = ["Con discapacidad", "Sin discapacidad"]
-            salarios = [salario_con, salario_sin]
+        # Datos para la gráfica
+        categorias = ["Con discapacidad", "Sin discapacidad"]
+        salarios = [salario_con, salario_sin]
 
-            # Crear la gráfica
-            fig, ax = plt.subplots()
-            ax.bar(categorias, salarios, color=['blue', 'green'])
-            ax.set_ylabel("Salario por hora (MXN)")
-            ax.set_title("Comparación de Salarios por Discapacidad")
+        # Crear la gráfica
+        fig, ax = plt.subplots()
+        ax.bar(categorias, salarios, color=['blue', 'green'])
+        ax.set_ylabel("Salario por hora (MXN)")
+        ax.set_title("Comparación de Salarios por Discapacidad")
 
-            # Agregar valores encima de las barras
-            for i, v in enumerate(salarios):
-                ax.text(i, v + 0.5, f"${v:.2f}", ha='center', fontsize=10)
+        # Agregar valores encima de las barras
+        for i, v in enumerate(salarios):
+            ax.text(i, v + 0.5, f"${v:.2f}", ha='center', fontsize=10)
 
-            # Mostrar la gráfica en Streamlit
-            st.pyplot(fig)
+        # Mostrar la gráfica en Streamlit
+        st.pyplot(fig)
  
