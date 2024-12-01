@@ -280,7 +280,7 @@ elif seccion == "Predicción de Salarios por Discapacidad":
     modelo = cargar_modelo(modelo_path)
 
     # Entrada de datos
-    st.header(f"Predicción del Salario por Hora para {discapacidad_seleccionada}")
+    st.header(f"Predicción del Salario por Hora para {discapacidad_formal_seleccionada}")
     edad = st.number_input("Edad", min_value=18, max_value=99, value=30)
     mujer = st.selectbox("Género", options=["Hombre", "Mujer"])
     escoacum = st.number_input("Escolaridad Acumulada (en años)", min_value=0, max_value=30, value=12)
