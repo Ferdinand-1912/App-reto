@@ -247,22 +247,6 @@ elif seccion == "Modelos Clasificadores de Prestaciones":
         )
         st.write(f"Probabilidad: {probabilidad:.2f}")
         
-        # Explicación con SHAP
-        explainer = shap.TreeExplainer(modelo)
-        shap_values = explainer.shap_values(entradas)
-
-        # Crear tabla con contribuciones de las características
-        shap_df = pd.DataFrame({
-            "Variable": entradas.columns,
-            "Impacto": shap_values[0]
-        }).sort_values(by="Impacto", ascending=False)
-
-        # Mostrar la tabla en Streamlit
-        st.write("Impacto de cada variable en la probabilidad:")
-        st.dataframe(shap_df)
-
-        # Mostrar un gráfico de barras (opcional)
-        st.bar_chart(shap_df.set_index("Variable"))
 
 # Sección: Predicción de Salarios por Discapacidad
 elif seccion == "Predicción de Salarios por Discapacidad":
