@@ -76,6 +76,7 @@ if seccion == "Explicación y guía":
     # Mostrar la gráfica introductoria
     st.image("gráfica_intro.png", caption="Distribución de Cuartiles del Salario Mensual por Tipo de Población")
 
+
     # Expansión de la sección de Objetivo
     st.markdown(
         """
