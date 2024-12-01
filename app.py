@@ -3,6 +3,7 @@ import pandas as pd
 from joblib import load
 import numpy as np
 import os
+import shap
 
 
 
