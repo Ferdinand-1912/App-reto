@@ -74,7 +74,11 @@ if seccion == "Explicación y guía":
     )
 
     # Mostrar la gráfica introductoria
-    st.image("gráfica_intro.jpg", caption="Distribución de Cuartiles del Salario Mensual por Tipo de Población")
+    st.image(
+    "https://raw.githubusercontent.com/Ferdinand-1912/App-reto/6ded5927d9442ddb85ea1456df26b8c6ab979f21/gra%CC%81fica_intro.jpg", 
+    caption="Distribución de Cuartiles del Salario Mensual por Tipo de Población"
+)
+
 
 
     # Expansión de la sección de Objetivo
