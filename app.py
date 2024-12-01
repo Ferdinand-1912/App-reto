@@ -156,7 +156,7 @@ if seccion == "Explicación y guía":
     )
 
     # Ruta al archivo PDF
-    pdf_path = "soporte_de_la_app.pdf"
+    pdf_path = "Soporte.pdf"
 
 # Botón para descargar el PDF
     try:
@@ -166,7 +166,7 @@ if seccion == "Explicación y guía":
         st.download_button(
             label="Descargar PDF",
             data=pdf_data,
-            file_name="soporte_de_la_app.pdf",
+            file_name="Soporte",
             mime="application/pdf",
     )
     except FileNotFoundError:
