@@ -68,50 +68,56 @@ if seccion == "Explicación y guía":
        Existen investigaciones enfocadas a temas similares, Alonso & Albarrán (2010) hicieron un análisis sobre el mercado laboral español de las personas con discapacidad y en situación de dependencia, mediante un modelo logit binario calcularon probabilidades diferenciadas de que las Personas con Discapacidad (PcD) tengan trabajo, utilizando diferentes variables demográficas. Pérez (2012) analiza la problemática de la discapacidad en México, señalando cómo las transformaciones del mercado laboral han generado vulnerabilidad y exclusión social, especialmente para PcD, debido a la falta de protecciones sociales y la precariedad laboral en un entorno dominado por el sector informal. Rodríguez y García (2021) estimaron diferencias salariales para las PcD y encontraron que hay discriminación salarial. Keating, Keramat,  Waller & Hashmi (2022) analizaron la satisfacción en diferentes condiciones de trabajo de las PcD, encontrando evidencia estadística que tener alguna discapacidad reduce la satisfacción dentro de las condiciones de trabajo. 
       
        La literatura sobre el tema expone la precariedad del panorama laboral para las PcD en México. A pesar de que se reconoce legalmente su derecho al trabajo, la mayoría enfrenta exclusión social debido a la falta de protecciones estatales y la prevalencia de empleos informales y de baja productividad, aunado al hecho de que las empresas suelen no aprovechar incentivos fiscales para contratarlos, y muchas organizaciones civiles carecen de los recursos suficientes para garantizar su inserción laboral efectiva. Esto deja a las personas discapacitadas en una situación de vulnerabilidad constante (Vite Pérez, 2012).
-        Las personas con discapacidad integradas al mercado laboral pueden enfrentar **trato diferenciado** en comparación con los trabajadores sin discapacidad, debido a varios factores:
-        
-        
-
-        ### Objetivo de esta Aplicación
-        Esta aplicación incluye modelos predictivos para estimar:
-
-        - **La probabilidad de obtener Prestaciones laborales específicas .**
-        - **Salarios por hora** para personas con diferentes tipos de discapacidades, comparando entre personas con y sin discapacidad.
-
-        ### Cómo Usar esta Aplicación
-        1. **Selecciona la Sección**: 
-            - *Modelos Clasificadores de Prestaciones*: Predice si deberías recibir una prestación laboral específica (como aguinaldo o vacaciones con sueldo) según tus características.
-            - *Predicción de Salarios por Discapacidad*: Calcula el salario por hora para personas con un tipo específico de discapacidad y lo compara con el de personas sin discapacidad.
-
-        2. **Modelos Clasificadores de Prestaciones**:
-            - En esta sección, elige la prestación que deseas analizar.
-            - Llena la información requerida, como tu edad, género, nivel educativo, y si tienes alguna discapacidad.
-            - Haz clic en **"Predecir Prestación"**.
-            - El modelo te mostrará si, de acuerdo con tus características, deberías tener la prestación laboral seleccionada y la probabilidad estimada de obtenerla.
-
-        3. **Predicción de Salarios por Discapacidad**:
-            - Selecciona el tipo de discapacidad que deseas analizar.
-            - Llena la información requerida, como tu edad, género, nivel educativo, y otros datos relevantes.
-            - Haz clic en **"Predecir Salarios"**.
-            - La aplicación mostrará:
-                - **Salario con discapacidad**: El salario estimado por hora para una persona con la discapacidad seleccionada.
-                - **Salario sin discapacidad**: El salario estimado por hora para una persona sin discapacidad.
-
-        ### Interpretación de Resultados
-        - **Modelos Clasificadores de Prestaciones**:
-            - El resultado indica si deberías o no tener la prestación laboral seleccionada. Además, te da la probabilidad estimada (entre 0 y 1) de obtenerla. Por ejemplo, una probabilidad del 0.85 significa que hay un 85% de posibilidad de que tengas esa prestación.
-        - **Predicción de Salarios por Discapacidad**:
-            - Compara los salarios estimados con y sin discapacidad. Por ejemplo:
-                - Salario con discapacidad: $25.77 por hora.
-                - Salario sin discapacidad: $28.75 por hora.
-            - Esto significa que, según el modelo, existe una diferencia de $3.02 por hora entre los dos grupos.
-
-        ### Consideraciones
-        - Los modelos están basados en datos del Censo  2020 y pueden no reflejar completamente todas las situaciones individuales.
-        - Los resultados deben interpretarse como herramientas de apoyo y no como determinantes absolutos.
-        
+       
+       Como análisis inicial se puede observar la siguiente gráfica la cual se obtuvo con información del Censo de Población y Vivienda 2020, en el que se muestra la distribución de cuartiles del salario mensual por trabajo de los grupos de personas con discapacidad. Como se puede observar, el grupo de personas sin discapacidad es el que tiene las distribuciones más altas de salario a comparación de los demás grupos. Además, se puede apreciar cómo también hay diferencias en las distribuciones entre cada grupo de población con discapacidad. Esto es una muestra inicial de lo que se busca mostrar en esta página.
         """
     )
+
+    # Mostrar la gráfica introductoria
+    st.image("gráfica_intro.png", caption="Distribución de Cuartiles del Salario Mensual por Tipo de Población")
+
+    # Expansión de la sección de Objetivo
+    st.markdown(
+        """
+        ### Objetivo de esta Aplicación
+        Esta aplicación tiene como objetivo principal proporcionar una herramienta interactiva y visual para analizar las condiciones laborales de las personas con discapacidad en México. Esto incluye dos aspectos fundamentales:
+
+        1. **Evaluar el acceso a prestaciones laborales:** 
+           Mediante modelos predictivos, se busca estimar la probabilidad de que una persona reciba ciertas prestaciones laborales específicas (como aguinaldo o vacaciones con sueldo), considerando variables demográficas y laborales.
+
+        2. **Analizar diferencias salariales:**
+           Se presentan estimaciones del salario por hora para personas con distintos tipos de discapacidad, comparándolos con el salario de personas sin discapacidad. Esto permite observar y cuantificar las brechas salariales que enfrentan estos grupos en el mercado laboral.
+
+        ### Cómo Usar esta Aplicación
+        La aplicación está organizada en dos secciones principales, cada una con un enfoque específico:
+
+        #### 1. Modelos Clasificadores de Prestaciones
+        En esta sección puedes:
+        - Seleccionar una prestación laboral específica para analizar (por ejemplo, aguinaldo o servicio médico).
+        - Ingresar información sobre características individuales y laborales, como edad, género, escolaridad acumulada, y si tienes alguna discapacidad.
+        - Obtener un resultado que indique si, con base en las características ingresadas, es probable que recibas dicha prestación, junto con una probabilidad estimada.
+
+        #### 2. Predicción de Salarios por Discapacidad
+        En esta sección puedes:
+        - Seleccionar un tipo de discapacidad específico (o el grupo de personas sin discapacidad) para analizar.
+        - Ingresar información relevante como edad, género, escolaridad acumulada, y otros factores demográficos.
+        - Visualizar las estimaciones del salario por hora tanto para personas con la discapacidad seleccionada como para personas sin discapacidad.
+
+        ### Interpretación de Resultados
+        - **Modelos Clasificadores de Prestaciones:**
+          Los resultados incluyen una probabilidad estimada de recibir la prestación laboral seleccionada. Por ejemplo, una probabilidad del 0.85 indica que, según el modelo, hay un 85% de posibilidad de que tengas derecho a esa prestación.
+        - **Predicción de Salarios por Discapacidad:**
+          Los resultados muestran el salario estimado por hora para ambos grupos (con y sin discapacidad). Por ejemplo:
+            - Salario con discapacidad: $25.77 por hora.
+            - Salario sin discapacidad: $28.75 por hora.
+          Esto implica una diferencia salarial de $3.02 por hora en promedio entre los dos grupos.
+
+        ### Consideraciones
+        - Los modelos están basados en datos del **Censo de Población y Vivienda 2020** y pueden no reflejar todas las particularidades individuales.
+        - Los resultados son herramientas de apoyo analítico y no determinantes absolutos.
+        """
+    )
+
      # ¿De dónde vienen las estimaciones?
     st.markdown(
         """
