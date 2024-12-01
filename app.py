@@ -336,3 +336,24 @@ elif seccion == "Predicción de Salarios por Discapacidad":
             st.metric("Salario con discapacidad", f"${salario_con:.2f} por hora")
         with col2:
             st.metric("Salario sin discapacidad", f"${salario_sin:.2f} por hora")
+            
+        # Crear una gráfica de barras
+        st.subheader("Comparación de Salarios")
+        import matplotlib.pyplot as plt
+    
+        # Datos para la gráfica
+        categorias = ["Con discapacidad", "Sin discapacidad"]
+        salarios = [salario_con, salario_sin]
+    
+        # Crear la gráfica
+        fig, ax = plt.subplots()
+        ax.bar(categorias, salarios, color=['blue', 'green'])
+        ax.set_ylabel("Salario por hora (MXN)")
+        ax.set_title("Comparación de Salarios por Discapacidad")
+     
+        # Agregar valores encima de las barras
+        for i, v in enumerate(salarios):
+            ax.text(i, v + 0.5, f"${v:.2f}", ha='center', fontsize=10)
+
+        # Mostrar la gráfica en Streamlit
+        st.pyplot(fig)    
