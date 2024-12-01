@@ -18,6 +18,7 @@ modelos_prestaciones = {
     "Crédito para vivienda": "modelo_credito_vivienda.pkl",
 }
 
+# Diccionario de modelos con nombres internos
 modelos_salario = {
     "cualquier_discapacidad": "modelo_salario_cualquier_discapacidad.pkl",
     "discapacidad_ver": "modelo_salario_discapacidad_ver.pkl",
@@ -27,6 +28,18 @@ modelos_salario = {
     "discapacidad_hablar": "modelo_salario_discapacidad_hablar.pkl",
     "discapacidad_recordar": "modelo_salario_discapacidad_recordar.pkl",
 }
+
+# Diccionario para mostrar nombres formales
+nombres_formales = {
+    "cualquier_discapacidad": "Cualquier Discapacidad",
+    "discapacidad_ver": "Discapacidad Visual",
+    "discapacidad_oir": "Discapacidad Auditiva",
+    "discapacidad_caminar": "Discapacidad Motriz",
+    "discapacidad_banarse": "Discapacidad para Cuidarse",
+    "discapacidad_hablar": "Discapacidad del Habla",
+    "discapacidad_recordar": "Discapacidad Cognitiva",
+}
+
 
 def cargar_modelo(nombre_modelo):
     return load(nombre_modelo)
@@ -251,7 +264,18 @@ elif seccion == "Modelos Clasificadores de Prestaciones":
 # Sección: Predicción de Salarios por Discapacidad
 elif seccion == "Predicción de Salarios por Discapacidad":
     st.title("Predicción de Salarios por Discapacidad")
-    discapacidad_seleccionada = st.sidebar.selectbox("Tipo de Discapacidad", list(modelos_salario.keys()))
+    # Mostrar nombres formales en el selector
+    discapacidad_formal_seleccionada = st.sidebar.selectbox(
+    "Tipo de Discapacidad",
+    list(nombres_formales.values())  # Se muestran los nombres formales
+)
+
+# Traducción del nombre formal seleccionado al nombre interno
+    discapacidad_seleccionada = [
+    key for key, val in nombres_formales.items() if val == discapacidad_formal_seleccionada
+][0]
+
+# Cargar el modelo correspondiente
     modelo_path = modelos_salario[discapacidad_seleccionada]
     modelo = cargar_modelo(modelo_path)
 
