@@ -263,7 +263,7 @@ elif seccion == "Modelos Clasificadores de Prestaciones":
     nombre_interno_map = {v: k for k, v in nombre_formal_map.items()}
 
     # Sección: Predicción de Salarios por Discapacidad
- elif seccion == "Predicción de Salarios por Discapacidad":
+elif seccion == "Predicción de Salarios por Discapacidad":
     st.title("Predicción de Salarios por Discapacidad")
     
      # Usar los nombres formales en el menú desplegable
