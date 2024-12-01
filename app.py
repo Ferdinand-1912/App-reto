@@ -18,7 +18,7 @@ modelos_prestaciones = {
     "Crédito para vivienda": "modelo_credito_vivienda.pkl",
 }
 
-modelos_salario = {
+nombre_interno_map = {
     "cualquier_discapacidad": "modelo_salario_cualquier_discapacidad.pkl",
     "discapacidad_ver": "modelo_salario_discapacidad_ver.pkl",
     "discapacidad_oir": "modelo_salario_discapacidad_oir.pkl",
